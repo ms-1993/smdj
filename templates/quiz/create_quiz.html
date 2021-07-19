@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #17a2b8;
+    height: 100vh;
+  }
+
+  #login .container #login-row #login-column #login-box {
+    margin-top: 60px;
+    max-width: 600px;
+    height: 320px;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+  }
+
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+</style>
+
+<div id="login">
+  <h3 class="text-center text-white pt-5">Create Quiz Form</h3>
+  <div class="container">
+    <div id="login-row" class="row justify-content-center align-items-center">
+      <div id="login-column" class="col-md-6">
+        <div id="login-box" class="col-md-12">
+
+          <form id="login-form" class="form" action="" method="post">
+
+            {% csrf_token %}
+            <h3 class="text-center text-info">Create Quiz</h3>
+
+            <div class="form-group">
+
+              {{ form|crispy }}
+            </div>
+            <div class="form-group">
+              <!-- <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br> -->
+              <input type="submit" name="submit" class="btn btn-info btn-md" value="Create">
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

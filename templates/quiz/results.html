@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} 
+{% load static %}
+{%block content %} 
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #17a2b8;
+    height: 100vh;
+  }
+
+  #login .container #login-row #login-column #login-box {
+    margin-top: 1px;
+    max-width: 600px;
+    height: 30pc;
+    border: 1px solid #9c9c9c;
+    background-color: #eaeaea;
+  }
+
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+
+  #register-link {
+    margin-top: -40px;
+  }
+</style>
+
+<div id="login">
+  <h3 class="text-center text-white pt-5">Results</h3>
+  <div class="container">
+    <div id="login-row" class="row justify-content-center align-items-center">
+      <div id="login-column" class="col-md-6">
+        <div id="login-box" class="col-md-12">
+          <form id="login-form" class="form" action="" method="post">
+            <h3 class="text-center text-info">Hello,{{user.username}}</h3>
+            <br />
+            <br />
+            <div class="form-group">
+              <label class="text-info">Total Questions:</label>
+              <label class="text"> {{total_questions}} Questions </label><br />
+            </div>
+
+            <div class="form-group">
+              <label class="text-info">No.Of. Q. Correct:</label>
+              <label class="text"> {{num_correct}} </label><br />
+            </div>
+            <div class="form-group">
+              <label class="text-info">No.Of .Q Wrong:</label>
+              <label class="text"> {{num_wrong}} </label><br />
+            </div>
+            <div class="form-group">
+              <label for="username" class="text-info">Score:</label>
+
+              <label for="username" class="text">
+                {% if accuracy_over_75 %}
+                <p class="accuracy_good">{{ accuracy_formatted }}</p>
+
+                {% else %}
+                <p class="accuracy_bad">{{ accuracy_formatted }}</p>
+                {% endif %}
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="text-info">Time Taken:{{Taketime}} seconds</label>
+            </div>
+
+            <div class="text-left">
+              <button type="button" class="btn btn-outline-info">
+                <a
+                  class="home_button"
+                  style="text-decoration: none"
+                  href="{% url 'quiz:dashboard' %}"
+                  >Home</a
+                >
+              </button>
+            </div>
+            <div id="register-link" class="text-right">
+              <button type="button" class="btn btn-outline-info">
+                <a
+                  class="home_button"
+                  style="text-decoration: none; margin-top: 10px"
+                  href="{% url 'quiz:single_quiz' quiz.id %}"
+                  >Try Again</a
+                >
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

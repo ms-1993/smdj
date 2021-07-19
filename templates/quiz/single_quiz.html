@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load static %}
+
+<title>Single Quiz</title>
+<div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="card text-white bg-primary sm-3 lg-3 mb-3 center" style="max-width: 20rem;">
+                <div class="card-header">{{ quiz.quiz_title }}</div>
+                <div class="card-body" style="text-align: justify; text-align: center;">
+                    <h5 class="card-title">{{ num_questions }} Questions</h5>
+                    <a class="btn btn-primary btn-lg" href="{% url 'quiz:single_question' quiz.id 1 %}"
+                        role="button">Start Quiz</a>
+                    <a class="btn btn-secondary btn-lg" href="{% url 'quiz:dashboard' %}" role="button">Home</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
